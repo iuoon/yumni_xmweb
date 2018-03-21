@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
       <Layout>
-        <Header class="tag_head_c">浔梦中文网</Header>
+        <Header class="tag_head_c"><cc-header></cc-header></Header>
         <Layout class="tag_layout_c1">
           <Content class="tag_content_c">Content</Content>
           <Sider hide-trigger class="tag_sider_c">Sider</Sider>
@@ -11,15 +11,22 @@
     </div>
 </template>
 <script>
+  import CCHeader from './CCHeader'
   export default {
-
+    name: 'Index',
+    data () {
+      return {
+        msg: ''
+      }
+    },
+    components: {
+      CCHeader
+    }
   }
 </script>
 <style>
  .tag_head_c{
    background-color: #fff;
-   font-size: large;
-   color: aqua;
  }
  .tag_layout_c1{
    height: 1080px;
