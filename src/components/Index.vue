@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
       <Layout>
-        <Header class="tag_head_c"><cc-header></cc-header></Header>
+        <Header class="tag_head_c"><CCHeader></CCHeader></Header>
         <Layout class="tag_layout_c1">
           <Content class="tag_content_c">Content</Content>
           <Sider hide-trigger class="tag_sider_c">Sider</Sider>
