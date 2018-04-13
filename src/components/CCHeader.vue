@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="d_logo">
-      <span class="sp_head_title">Mark</span>
+      <span class="sp_head_title">MARK</span>
     </div>
     <div class="d_1">
       <a href="javascript:void(0)" class="a_login">登录</a>
@@ -36,6 +36,6 @@
   }
   .sp_head_title{
     font-size: large;
-    color: aqua;
+    color: #ccc;
   }
 </style>
