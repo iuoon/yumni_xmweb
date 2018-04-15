@@ -3,12 +3,13 @@
  */
 import 'whatwg-fetch'
 
-const host = 'http://www.iuoon.com:9002/YNServer/'
+// const host = 'http://www.iuoon.com:9002/YNServer/'
+const host = 'http://localhost:8080/'
 /*
  *获取资讯列表
  */
-export let getArticleList = async (nPageStart, tag) => {
-  let response = await fetch(host + `app/getArticleList?nPageStart=${nPageStart}&nPageSize=50`, {
+export let getQuestionList = async (nPageStart, tag) => {
+  let response = await fetch(host + `app/getQuestionList?nPageStart=${nPageStart}&nPageSize=50`, {
     method: 'GET',
     mode: 'cors'
   }).catch((error) => {
@@ -22,8 +23,8 @@ export let getArticleList = async (nPageStart, tag) => {
 /*
  *获取资讯详情
  */
-export let getNewsDetail = async (id) => {
-  let response = await fetch(host + `news_detail?id=${id}`, {
+export let getHotQuestions = async () => {
+  let response = await fetch(host + `app/getHotQuestions`, {
     method: 'GET',
     mode: 'cors'
   }).catch((error) => {

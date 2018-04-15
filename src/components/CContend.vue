@@ -1,23 +1,25 @@
 <template>
   <div class="contend">
     <div style="margin-top: 20px;border-bottom: 1px solid #DDD;">
-      <h2>阅读推荐</h2>
+      <a href="#" style="font-size: 16px;color: #787b7b;">提问答疑</a>
+      <a href="#" style="float: right;margin-right: 20px;margin-top: 5px;">更多</a>
     </div>
     <div>
-      <div v-for="article in articlelist" :key="article.lId">
+      <div v-for="question in questions" :key="question.lId">
         <!-- 内容 -->
-        <header><a href="/article/1233"><h2>{{article.strTitle}}</h2></a></header>
-        <span>{{article.strSummary}}</span>
+        <header><a :href="getQuestPath(question.lId)"><h2>{{question.strTitle}}</h2></a></header>
+        <span>{{question.strSummary}}</span>
       </div>
     </div>
     <div style="margin-top: 20px;border-bottom: 1px solid #DDD;">
-      <h2>解你所需</h2>
+      <a href="#" style="font-size: 16px;color: #787b7b;">解你所需</a>
+      <a href="#" style="float: right;margin-right: 20px;margin-top: 5px;">更多</a>
     </div>
     <div>
-      <div v-for="article in articlelist" :key="article.lId">
+      <div v-for="question in questions" :key="question.lId">
         <!-- 内容 -->
-        <header><a href="/article/1233"><h2>{{article.strTitle}}</h2></a></header>
-        <span>{{article.strSummary}}</span>
+        <header><a :href="getQuestPath(question.lId)"><h2>{{question.strTitle}}</h2></a></header>
+        <span>{{question.strSummary}}</span>
       </div>
     </div>
   </div>
@@ -25,13 +27,13 @@
 
 <script>
   import CContendBox from './CContendBox.vue'
-  import { getArticleList } from '../net/api'
+  import { getQuestionList } from '../net/api'
 
   export default {
     name: 'CContend',
     data () {
       return {
-        articlelist: []
+        questions: []
       }
     },
     components: {
@@ -42,9 +44,12 @@
     },
     methods: {
       async loadList () {
-        let data = await getArticleList(0, 20)
+        let data = await getQuestionList(0, 20)
         console.log(data)
-        this.articlelist = data.articles
+        this.questions = data.questions
+      },
+      getQuestPath (lId) {
+        return '/question/' + lId
       }
     }
   }

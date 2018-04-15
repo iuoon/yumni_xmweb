@@ -4,15 +4,20 @@
       <span class="sp_head_title">MARK</span>
     </div>
     <div class="d_1">
-      <a href="javascript:void(0)" class="a_login">登录</a>
-      <a href="javascript:void(0)" class="a_register">注册</a>
+      <a href="#/login" class="a_login">登录</a>
+      <a href="#/register" class="a_register">注册</a>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'CCHeader'
+    name: 'CCHeader',
+    methods: {
+      getQuestPath (lId) {
+        return '/question/' + lId
+      }
+    }
   }
 </script>
 
