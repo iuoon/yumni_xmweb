@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="d_logo">
-      <span class="sp_head_title">MARK</span>
+      <a class="a_head_title" href="/">MARK</a>
     </div>
     <div class="d_1">
       <a href="#/login" class="a_login">登录</a>
@@ -39,7 +39,7 @@
     width:78px;
     height:38px
   }
-  .sp_head_title{
+  .a_head_title{
     font-size: large;
     color: #ccc;
   }

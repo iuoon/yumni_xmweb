@@ -1,5 +1,6 @@
 <template>
   <div class="background">
+    <Header class="tag_head_c"><CCHeader></CCHeader></Header>
     <div class="login_c">
       <h2 class="head-u">用户登录</h2>
       <Input placeholder="手机／邮箱" style="width: 250px" class="input-d"></Input>
@@ -9,6 +10,7 @@
   </div>
 </template>
 <script>
+  import CCHeader from './CCHeader'
   import bg from '@/assets/xbg01.png'
 
   export default {
@@ -17,6 +19,9 @@
       return {
         bgImg: bg
       }
+    },
+    components: {
+      CCHeader
     },
     created () {
       this.setBankGround()
@@ -46,7 +51,7 @@
     background-color: #fff;
     border-radius: 4px;
     z-index: 10;
-    box-shadow:0px 0px 3px #50fff3;
+    box-shadow:0px 0px 5px #ccc;
     text-align:center;
   }
   .head-u{
@@ -59,5 +64,9 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
+  }
+  .tag_head_c{
+    background-color: #fff;
+    border-bottom: 1px solid #DDD;
   }
 </style>

@@ -3,8 +3,8 @@
  */
 import 'whatwg-fetch'
 
-// const host = 'http://www.iuoon.com:9002/YNServer/'
-const host = 'http://localhost:8080/'
+const host = 'http://www.iuoon.com:9002/YNServer/'
+// const host = 'http://localhost:8080/'
 /*
  *获取资讯列表
  */
