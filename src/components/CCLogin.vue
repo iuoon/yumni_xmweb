@@ -3,9 +3,9 @@
     <Header class="tag_head_c"><CCHeader></CCHeader></Header>
     <div class="login_c">
       <h2 class="head-u">用户登录</h2>
-      <Input placeholder="手机／邮箱" style="width: 250px" class="input-d"></Input>
-      <Input placeholder="密码" style="width: 250px" class="input-d"></Input>
-      <Button type="info" style="width: 250px" class="input-d">登录</Button>
+      <Input v-model="strUserName" placeholder="手机／邮箱" style="width: 250px" class="input-d"></Input>
+      <Input v-model="strPwd" type="password" placeholder="密码" style="width: 250px" class="input-d"></Input>
+      <Button type="info" style="width: 250px" class="input-d" @click="doLogin()">登录</Button>
     </div>
   </div>
 </template>
@@ -17,7 +17,9 @@
     name: 'CCLogin',
     data () {
       return {
-        bgImg: bg
+        bgImg: bg,
+        strUserName: '',
+        strPwd: ''
       }
     },
     components: {
@@ -29,6 +31,9 @@
     methods: {
       setBankGround () {
 
+      },
+      doLogin () {
+        console.log(this.strUserName + ' ' + this.strPwd)
       }
     }
   }

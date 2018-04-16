@@ -34,3 +34,23 @@ export let getHotQuestions = async () => {
     console.log(error)
   })
 }
+
+/**
+ * 登录
+ * @returns {Promise.<Promise.<T>|*>}
+ */
+export let doLogin = async (strUserName, strPwd) => {
+  let response = await fetch(host + `app/doLogin`, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    mode: 'cors',
+    body: JSON.stringify({strUserName: strUserName, strPwd: strPwd})
+  }).catch((error) => {
+    console.log(error)
+  })
+  return response.json().catch((error) => {
+    console.log(error)
+  })
+}
