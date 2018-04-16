@@ -12,6 +12,7 @@
 <script>
   import CCHeader from './CCHeader'
   import bg from '@/assets/xbg01.png'
+  import { doLogin } from '../net/api'
 
   export default {
     name: 'CCLogin',
@@ -33,7 +34,9 @@
 
       },
       doLogin () {
-        console.log(this.strUserName + ' ' + this.strPwd)
+        console.log('userName:' + this.strUserName + ' pwd:' + this.strPwd)
+        let data = doLogin(this.strUserName, this.strPwd)
+        this.questions = data.questions
       }
     }
   }
