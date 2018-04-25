@@ -5,6 +5,8 @@ import 'whatwg-fetch'
 
 const host = 'http://www.iuoon.com:9002/YNServer/'
 // const host = 'http://localhost:8080/'
+
+var header = {strPlatform: 'web', token: '', userId: ''}
 /*
  *获取资讯列表
  */
@@ -36,7 +38,7 @@ export let getHotQuestions = async () => {
 }
 
 /**
- * 登录
+ *
  * @returns {Promise.<Promise.<T>|*>}
  */
 export let doLogin = async (strUserName, strPwd) => {
@@ -46,7 +48,7 @@ export let doLogin = async (strUserName, strPwd) => {
     },
     method: 'POST',
     mode: 'cors',
-    body: JSON.stringify({strUserName: strUserName, strPwd: strPwd})
+    body: JSON.stringify({strUserName: strUserName, strPwd: strPwd, header: header})
   }).catch((error) => {
     console.log(error)
   })

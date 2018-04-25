@@ -12,7 +12,7 @@
 <script>
   import CCHeader from './CCHeader'
   import bg from '@/assets/xbg01.png'
-  import { doLogin } from '../net/api'
+  import { doLogin } from '../net/NetApi'
 
   export default {
     name: 'CCLogin',
