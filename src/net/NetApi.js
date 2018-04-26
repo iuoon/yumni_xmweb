@@ -13,7 +13,8 @@ var header = {strPlatform: 'web', token: '', userId: ''}
 export let getQuestionList = async (nPageStart, tag) => {
   let response = await fetch(host + `app/getQuestionList?nPageStart=${nPageStart}&nPageSize=50`, {
     method: 'GET',
-    mode: 'cors'
+    mode: 'cors',
+    credentials: 'include'
   }).catch((error) => {
     console.log(error)
   })
@@ -28,7 +29,8 @@ export let getQuestionList = async (nPageStart, tag) => {
 export let getHotQuestions = async () => {
   let response = await fetch(host + `app/getHotQuestions`, {
     method: 'GET',
-    mode: 'cors'
+    mode: 'cors',
+    credentials: 'include'
   }).catch((error) => {
     console.log(error)
   })
@@ -48,6 +50,7 @@ export let doLogin = async (strUserName, strPwd) => {
     },
     method: 'POST',
     mode: 'cors',
+    credentials: 'include',
     body: JSON.stringify({strUserName: strUserName, strPwd: strPwd, header: header})
   }).catch((error) => {
     console.log(error)
