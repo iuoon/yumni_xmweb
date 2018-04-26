@@ -36,7 +36,7 @@
       doLogin () {
         console.log('userName:' + this.strUserName + ' pwd:' + this.strPwd)
         let data = doLogin(this.strUserName, this.strPwd)
-        this.questions = data.questions
+        console.log(data)
       }
     }
   }

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import { getHotQuestions } from '../net/api'
+  import { getHotQuestions } from '../net/HttpApi'
   export default {
     name: 'QustionRank',
     data () {

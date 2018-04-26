@@ -27,7 +27,7 @@
 
 <script>
   import CContendBox from './CContendBox.vue'
-  import { getQuestionList } from '../net/api'
+  import { getQuestionList } from '../net/HttpApi'
 
   export default {
     name: 'CContend',
