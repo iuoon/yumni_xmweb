@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="d_logo">
-      <a class="a_head_title" href="/">MARK</a>
+      <a class="a_head_title" href="/">奇点</a>
     </div>
     <div class="d_1">
       <a href="#/login" class="a_login">登录</a>
@@ -41,6 +41,6 @@
   }
   .a_head_title{
     font-size: large;
-    color: #ccc;
+    color: #bcfe65;
   }
 </style>

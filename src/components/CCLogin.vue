@@ -36,7 +36,11 @@
       doLogin () {
         console.log('userName:' + this.strUserName + ' pwd:' + this.strPwd)
         let data = doLogin(this.strUserName, this.strPwd)
-        console.log(data)
+        if (data.code === 0) {
+
+        } else {
+          alert(data.msg)
+        }
       }
     }
   }
