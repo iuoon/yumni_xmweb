@@ -34,13 +34,16 @@
 
       },
       doLogin () {
+        var _self = this
         console.log('userName:' + this.strUserName + ' pwd:' + this.strPwd)
-        let data = doLogin(this.strUserName, this.strPwd)
-        if (data.code === 0) {
-
-        } else {
-          alert(data.msg)
-        }
+        let resp = doLogin(this.strUserName, this.strPwd)
+        resp.then(function (data) {
+          if (data.code === 0) {
+            _self.$router.go(-1)
+          } else {
+            alert(data.msg)
+          }
+        })
       }
     }
   }
