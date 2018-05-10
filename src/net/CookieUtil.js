@@ -33,21 +33,6 @@ export let getCookie = async (name) => {
   return null
 }
 
-export let getCookie2 = async (cookieName) => {
-  var start = 0
-  var end = 0
-  if (document.cookie.length > 0) {
-    start = document.cookie.indexOf(cookieName + '=')
-    if (start !== -1) {
-      start = start + cookieName.length + 1
-      end = document.cookie.indexOf(';', start)
-      if (end === -1) end = document.cookie.length
-      return unescape(document.cookie.substring(start, end))
-    }
-  }
-  return ''
-}
-
 /**
  * 删除cookie
  * @param name

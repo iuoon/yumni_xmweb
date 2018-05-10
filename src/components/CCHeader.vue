@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import { getCookie2 } from '../net/CookieUtil'
+  import { getCookie } from '../net/CookieUtil'
 
   export default {
     name: 'CCHeader',
@@ -32,7 +32,7 @@
         return '/question/' + lId
       },
       init () {
-        console.log('token==>', getCookie2('token'))
+        console.log('token==>', getCookie('token'))
       }
     }
   }
