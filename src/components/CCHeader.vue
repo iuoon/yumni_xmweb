@@ -3,19 +3,36 @@
     <div class="d_logo">
       <a class="a_head_title" href="/">奇点</a>
     </div>
-    <div class="d_1">
+    <div class="d_1" ref="login">
       <a href="#/login" class="a_login">登录</a>
       <a href="#/register" class="a_register">注册</a>
+    </div>
+    <div class="d_1" ref="login" style="display: none;">
+      <a href="#/login" class="a_login">{{strUserName}}</a>
+      <a href="#/logout" class="a_register">退出登录</a>
     </div>
   </div>
 </template>
 
 <script>
+  import { getCookie2 } from '../net/CookieUtil'
+
   export default {
     name: 'CCHeader',
+    data () {
+      return {
+        strUserName: ''
+      }
+    },
+    created () {
+      this.init()
+    },
     methods: {
       getQuestPath (lId) {
         return '/question/' + lId
+      },
+      init () {
+        console.log('token==>', getCookie2('token'))
       }
     }
   }
