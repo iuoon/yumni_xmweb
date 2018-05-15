@@ -30,7 +30,7 @@ export let getCookie = async (name) => {
       return unescape(document.cookie.substring(begin, end))
     }
   }
-  return null
+  return ''
 }
 
 /**

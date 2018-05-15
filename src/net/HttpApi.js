@@ -59,3 +59,19 @@ export let doLogin = async (strUserName, strPwd) => {
     console.log(error)
   })
 }
+
+export let getUserById = async (strUserId) => {
+  let response = await fetch(host + `app/getUserById?strUserId=${strUserId}`, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    mode: 'cors',
+    credentials: 'include'
+  }).catch((error) => {
+    console.log(error)
+  })
+  return response.json().catch((error) => {
+    console.log(error)
+  })
+}
