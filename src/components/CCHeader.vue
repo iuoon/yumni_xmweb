@@ -4,12 +4,12 @@
       <a class="a_head_title" href="/">奇点</a>
     </div>
     <div class="d_1" :class="{'hide':hideLogin,'show':showLogin}">
-      <a href="#/login" class="a_login">登录</a>
-      <a href="#/register" class="a_register">注册</a>
+      <a href="#/login" class="a1">登录</a>
+      <a href="#/register" class="a2">注册</a>
     </div>
     <div class="d_1" :class="{'hide':hideUserInfo,'show':showUserInfo}">
-      <a href="#/login" class="a_login">{{strUserName}}</a>
-      <a href="#/logout" class="a_register">退出登录</a>
+      <a href="#/login" class="a1">{{strUserName}}</a>
+      <a class="a2 a3" @click="logout">退出登录</a>
     </div>
   </div>
 </template>
@@ -44,19 +44,19 @@
           resp.then(function (data) {
             if (data.code === 0) {
               _self.strUserName = data.user.strUserName
-              this.showLogin = false
-              this.hideLogin = true
-              this.showUserInfo = true
-              this.hideUserInfo = false
+              _self.showLogin = false
+              _self.hideLogin = true
+              _self.showUserInfo = true
+              _self.hideUserInfo = false
             } else {
               alert(data.msg)
             }
           })
         } else {
-          this.showLogin = true
-          this.hideLogin = false
-          this.showUserInfo = false
-          this.hideUserInfo = true
+          _self.showLogin = true
+          _self.hideLogin = false
+          _self.showUserInfo = false
+          _self.hideUserInfo = true
         }
       },
       getCookie (name) {
@@ -72,6 +72,9 @@
           }
         }
         return ''
+      },
+      logout () {
+        console.log(1)
       }
     }
   }
@@ -84,12 +87,12 @@
   .d_1{
     float:right;
   }
-  .a_login{
+  .a1{
     padding-right: 24px;
     font-size: 14px;
     color: #565656;
   }
-  .a_register{
+  .a2{
     font-size: 14px;
     color: #565656;
     width:78px;
@@ -104,5 +107,8 @@
   }
   .show{
     display: block;
+  }
+  .a2 a3:hover{
+    cursor:pointer
   }
 </style>
