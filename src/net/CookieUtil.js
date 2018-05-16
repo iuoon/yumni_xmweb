@@ -4,7 +4,7 @@
  * @param value
  * @returns {Promise.<void>}
  */
-export let setCookie = async (name, value) => {
+export function setCookie (name, value) {
   if (value) {
     var Days = 365
     var exp = new Date()
@@ -18,7 +18,7 @@ export let setCookie = async (name, value) => {
  * @param name
  * @returns {Promise.<null>}
  */
-export let getCookie = async (name) => {
+export function getCookie (name) {
   if (document.cookie.length > 0) {
     var begin = document.cookie.indexOf(name + '=')
     if (begin !== -1) {
@@ -38,11 +38,11 @@ export let getCookie = async (name) => {
  * @param name
  * @returns {Promise.<void>}
  */
-export let delCookie = async (name) => {
+export function delCookie (name) {
   var exp = new Date()
   exp.setTime(exp.getTime() - 1)
-  var cval = setCookie(name)
+  var cval = getCookie(name)
   if (cval && cval != null) {
-    document.cookie = name + '=' + cval + ';expires=' + exp.toGMTString()
+    document.cookie = name + '=' + cval + ';expires=' + exp.toUTCString() + '; domain=.iuoon.com; path=/'
   }
 }

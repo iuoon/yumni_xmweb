@@ -9,13 +9,14 @@
     </div>
     <div class="d_1" :class="{'hide':hideUserInfo,'show':showUserInfo}">
       <a href="#/login" class="a1">{{strUserName}}</a>
-      <a class="a2 a3" @click="logout">退出登录</a>
+      <a href="javascript:void(0)" class="a2 a3" @click="logout">退出登录</a>
     </div>
   </div>
 </template>
 
 <script>
   import { getUserById } from '../net/HttpApi'
+  import { getCookie, delCookie } from '../net/CookieUtil'
 
   export default {
     name: 'CCHeader',
@@ -37,9 +38,9 @@
       },
       init () {
         var _self = this
-        var strUserId = this.getCookie('strUserId')
+        var strUserId = getCookie('strUserId').replace(/\s+/g, '')
         console.log('strUserId==>', strUserId)
-        if (strUserId !== '' || strUserId !== null) {
+        if (strUserId !== '') {
           let resp = getUserById(encodeURI(strUserId))
           resp.then(function (data) {
             if (data.code === 0) {
@@ -59,22 +60,10 @@
           _self.hideUserInfo = true
         }
       },
-      getCookie (name) {
-        if (document.cookie.length > 0) {
-          var begin = document.cookie.indexOf(name + '=')
-          if (begin !== -1) {
-            begin += name.length + 1
-            var end = document.cookie.indexOf(';', begin)
-            if (end === -1) {
-              end = document.cookie.length
-            }
-            return unescape(document.cookie.substring(begin, end))
-          }
-        }
-        return ''
-      },
       logout () {
-        console.log(1)
+        delCookie('strUserId')
+        delCookie('token')
+        this.$router.push('/login')
       }
     }
   }
