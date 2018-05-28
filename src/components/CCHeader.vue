@@ -60,6 +60,8 @@
           _self.hideUserInfo = true
         }
       },
+      async initUserInfo () {
+      },
       logout () {
         delCookie('strUserId')
         delCookie('token')
