@@ -6,6 +6,7 @@ import 'iview/dist/styles/iview.css'    // 使用 CSS
 import Index from '@/components/Index'
 import CCLogin from '@/components/CCLogin'
 import CCRegister from '@/components/CCRegister'
+import CCUserInfo from '@/components/CCUserInfo'
 
 Vue.use(Router)
 Vue.use(VueResource)
@@ -27,6 +28,11 @@ export default new Router({
       path: '/register',
       name: 'CCRegister',
       component: CCRegister
+    },
+    {
+      path: '/userInfo',
+      name: 'CCUserInfo',
+      component: CCUserInfo
     }
   ]
 })

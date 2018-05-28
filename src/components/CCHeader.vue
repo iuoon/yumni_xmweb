@@ -8,7 +8,7 @@
       <a href="#/register" class="a2">注册</a>
     </div>
     <div class="d_1" :class="{'hide':hideUserInfo,'show':showUserInfo}">
-      <a href="#/login" class="a1">{{strUserName}}</a>
+      <a href="javascript:void(0)" class="a1" @click="gotoMyIndex">{{strUserName}}</a>
       <a href="javascript:void(0)" class="a2 a3" @click="logout">退出登录</a>
     </div>
   </div>
@@ -60,7 +60,8 @@
           _self.hideUserInfo = true
         }
       },
-      async initUserInfo () {
+      gotoMyIndex () {
+        this.$router.push('/userInfo')
       },
       logout () {
         delCookie('strUserId')

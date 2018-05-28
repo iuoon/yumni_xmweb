@@ -6,6 +6,11 @@
       <Input v-model="strUserName" placeholder="手机／邮箱" style="width: 250px" class="input-d"></Input>
       <Input v-model="strPwd" type="password" placeholder="密码" style="width: 250px" class="input-d"></Input>
       <Button type="info" style="width: 250px" class="input-d" @click="doLogin()">登录</Button>
+      <br>
+      <div>
+        <a href="javascript:void(0)" @click="forgetPwd()">记住密码</a>
+        <a href="javascript:void(0)" @click="forgetPwd()">忘记密码</a>
+      </div>
     </div>
   </div>
 </template>
@@ -44,6 +49,9 @@
             alert(data.msg)
           }
         })
+      },
+      forgetPwd () {
+        this.$router.push('/login')
       }
     }
   }

@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'CCUser',
+    name: 'CCUserInfo',
     data () {
       return {
         msg: ''
