@@ -42,7 +42,11 @@
       doLogin () {
         var _self = this
         console.log('userName:' + this.strUserName + ' pwd:' + this.strPwd)
-        let resp = doLogin(this.strUserName, this.strPwd, this.nIsRememberLogin)
+        var nIsRemember = 0
+        if (this.nIsRememberLogin) {
+          nIsRemember = 1
+        }
+        let resp = doLogin(this.strUserName, this.strPwd, nIsRemember)
         resp.then(function (data) {
           if (data.code === 0) {
             _self.$router.go(-1)
