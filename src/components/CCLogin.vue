@@ -1,21 +1,21 @@
 <template>
   <div class="background">
-    <Header class="tag_head_c"><CCHeader></CCHeader></Header>
+    <Header class="tag_head_c"><CCHeaderLogin></CCHeaderLogin></Header>
     <div class="login_c">
       <h2 class="head-u">用户登录</h2>
       <Input v-model="strUserName" placeholder="手机／邮箱" style="width: 250px" class="input-d"></Input>
       <Input v-model="strPwd" type="password" placeholder="密码" style="width: 250px" class="input-d"></Input>
       <Button type="info" style="width: 250px" class="input-d" @click="doLogin()">登录</Button>
       <br>
-      <div>
-        <a href="javascript:void(0)" @click="forgetPwd()">记住密码</a>
-        <a href="javascript:void(0)" @click="forgetPwd()">忘记密码</a>
+      <div class="login_c_1">
+        <Checkbox v-model="nIsRememberLogin" class="check_loginState">保持登录</Checkbox>
+        <a href="javascript:void(0)" @click="forgetPwd()" class="c01">忘记密码</a>
       </div>
     </div>
   </div>
 </template>
 <script>
-  import CCHeader from './CCHeader'
+  import CCHeaderLogin from './CCHeaderLogin'
   import bg from '@/assets/xbg01.png'
   import { doLogin } from '../net/HttpApi'
 
@@ -25,11 +25,12 @@
       return {
         bgImg: bg,
         strUserName: '',
-        strPwd: ''
+        strPwd: '',
+        nIsRememberLogin: false
       }
     },
     components: {
-      CCHeader
+      CCHeaderLogin
     },
     created () {
       this.setBankGround()
@@ -41,7 +42,7 @@
       doLogin () {
         var _self = this
         console.log('userName:' + this.strUserName + ' pwd:' + this.strPwd)
-        let resp = doLogin(this.strUserName, this.strPwd)
+        let resp = doLogin(this.strUserName, this.strPwd, this.nIsRememberLogin)
         resp.then(function (data) {
           if (data.code === 0) {
             _self.$router.go(-1)
@@ -91,5 +92,16 @@
   .tag_head_c{
     background-color: #fff;
     border-bottom: 1px solid #DDD;
+  }
+  .login_c_1{
+
+  }
+  .check_loginState{
+    color: #82dede;
+    margin-right: 120px;
+    padding-top: 10px;
+  }
+  .c01{
+    color: #82dede;
   }
 </style>

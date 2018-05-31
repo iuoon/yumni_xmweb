@@ -43,7 +43,7 @@ export let getHotQuestions = async () => {
  *
  * @returns {Promise.<Promise.<T>|*>}
  */
-export let doLogin = async (strUserName, strPwd) => {
+export let doLogin = async (strUserName, strPwd, nIsRememberLogin) => {
   let response = await fetch(host + `app/doLogin`, {
     headers: {
       'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ export let doLogin = async (strUserName, strPwd) => {
     method: 'POST',
     mode: 'cors',
     credentials: 'include',
-    body: JSON.stringify({strUserName: strUserName, strPwd: strPwd, header: header})
+    body: JSON.stringify({param: {strUserName: strUserName, strPwd: strPwd, nIsRemember: nIsRememberLogin}, header: header})
   }).catch((error) => {
     console.log(error)
   })
@@ -61,13 +61,14 @@ export let doLogin = async (strUserName, strPwd) => {
 }
 
 export let getUserById = async (strUserId) => {
-  let response = await fetch(host + `app/getUserById?strUserId=${strUserId}`, {
+  let response = await fetch(host + `app/getUserById`, {
     headers: {
       'Content-Type': 'application/json'
     },
     method: 'POST',
     mode: 'cors',
-    credentials: 'include'
+    credentials: 'include',
+    body: JSON.stringify({param: strUserId, header: header})
   }).catch((error) => {
     console.log(error)
   })
