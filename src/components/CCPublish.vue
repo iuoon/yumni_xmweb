@@ -1,7 +1,7 @@
 <template>
   <div>
     <div ref="editor" style="text-align:left"></div>
-    <button :click="getContent">查看内容</button>
+    <button @click="getContent">查看内容</button>
   </div>
 </template>
 
