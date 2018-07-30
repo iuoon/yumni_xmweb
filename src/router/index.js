@@ -7,6 +7,7 @@ import Index from '@/components/Index'
 import CCLogin from '@/components/CCLogin'
 import CCRegister from '@/components/CCRegister'
 import CCUserInfo from '@/components/CCUserInfo'
+import CCPublish from '@/components/CCPublish'
 
 Vue.use(Router)
 Vue.use(VueResource)
@@ -33,6 +34,11 @@ export default new Router({
       path: '/userInfo',
       name: 'CCUserInfo',
       component: CCUserInfo
+    },
+    {
+      path: '/publish',
+      name: 'CCPublish',
+      component: CCPublish
     }
   ]
 })
