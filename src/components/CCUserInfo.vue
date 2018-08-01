@@ -16,7 +16,7 @@
         </Content>
         <Sider hide-trigger class="tag_sider_c" :style="{width: '350px','max-width':'350px',flex:'0 0 350px'}">
           <div class="d_3">
-            <Button shape="circle" to="#/Publish" target="_blank"><Icon type="md-create" />发布文章</Button>
+            <Button shape="circle" to="/publish"><Icon type="md-create" />发布文章</Button>
           </div>
         </Sider>
       </Layout>

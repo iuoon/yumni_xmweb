@@ -39,7 +39,6 @@
       init () {
         var _self = this
         var strUserId = getCookie('strUserId').replace(/\s+/g, '')
-        console.log('strUserId==>', strUserId)
         if (strUserId !== '') {
           let resp = getUserById(encodeURI(strUserId))
           resp.then(function (data) {
@@ -50,7 +49,6 @@
               _self.showUserInfo = true
               _self.hideUserInfo = false
               _self.$store.dispatch('updateUser', data.user)
-              console.log(_self.$store.state.user.user.strUserName)
             } else {
               alert(data.msg)
             }
