@@ -8,7 +8,7 @@
       <a href="#/register" class="a2">注册</a>
     </div>
     <div class="d_1" :class="{'hide':hideUserInfo,'show':showUserInfo}">
-      <a href="javascript:void(0)" class="a1" @click="gotoMyIndex">{{strUserName}}</a>
+      <a href="javascript:void(0)" class="a1" @click="toUserCenter">{{strUserName}}</a>
       <a href="javascript:void(0)" class="a2 a3" @click="logout">退出登录</a>
     </div>
   </div>
@@ -49,6 +49,8 @@
               _self.hideLogin = true
               _self.showUserInfo = true
               _self.hideUserInfo = false
+              _self.$store.dispatch('updateUser', data.user)
+              console.log(_self.$store.state.user.user.strUserName)
             } else {
               alert(data.msg)
             }
@@ -60,7 +62,7 @@
           _self.hideUserInfo = true
         }
       },
-      gotoMyIndex () {
+      toUserCenter () {
         this.$router.push('/userInfo')
       },
       logout () {
