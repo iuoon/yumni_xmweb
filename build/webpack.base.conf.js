@@ -23,6 +23,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       '@': resolve('src'),
+      'vue': 'vue/dist/vue.js',  // --增加template compiler 动态渲染组件
     }
   },
   module: {
@@ -69,6 +70,11 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      // --添加less支持
+      {
+        test: /\.less$/,
+        loader: "style-loader!css-loader!less-loader"
       }
     ]
   }
