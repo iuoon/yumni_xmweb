@@ -10,12 +10,14 @@
 <script>
   import CCAlert from './CCAlert.vue'
 
+  var self   // --定义父组件对象，便于子组件调用父组件
+
   var componentPreResetPwd = {
     template: `<div>
                  <Input v-model="strUserName" placeholder="请输入手机号/邮箱" style="width: 250px" class="input-d"></Input>
                  <Input v-model="strCheckCode"  placeholder="验证码" style="width: auto;margin-right: 3%;" class="input-d"></Input>
                  <Button class="input-d" @click="doSendMobileCode()">发送验证码</Button>
-                 <Button type="info" style="width: 250px" class="input-d" @click="doRegister()">下一步</Button>
+                 <Button type="info" style="width: 250px" class="input-d" @click="doNext()">下一步</Button>
                </div>`,
     data () {
       return {
@@ -24,6 +26,9 @@
       }
     },
     methods: {
+      doNext () {
+        self.changeComponent()
+      }
     }
   }
 
@@ -62,8 +67,15 @@
       CCAlert
     },
     created () {
+      this.init()
     },
     methods: {
+      init () {
+        self = this
+      },
+      changeComponent () {
+        this.componentName = 'componentResetPwd'
+      }
     }
   }
 </script>
