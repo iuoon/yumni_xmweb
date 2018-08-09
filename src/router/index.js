@@ -8,6 +8,7 @@ import CCLogin from '@/components/CCLogin'
 import CCRegister from '@/components/CCRegister'
 import CCUserInfo from '@/components/CCUserInfo'
 import CCPublish from '@/components/CCPublish'
+import CCForgetPwd from '@/components/CCForgetPwd'
 
 Vue.use(Router)
 Vue.use(VueResource)
@@ -39,6 +40,11 @@ export default new Router({
       path: '/publish',
       name: 'CCPublish',
       component: CCPublish
+    },
+    {
+      path: '/forgetpwd',
+      name: 'CCForgetPwd',
+      component: CCForgetPwd
     }
   ]
 })

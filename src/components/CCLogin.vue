@@ -18,6 +18,7 @@
   import CCHeaderLogin from './CCHeaderLogin'
   import bg from '@/assets/xbg01.png'
   import { doLogin } from '../net/HttpApi'
+  import CCForgetPwd from './CCForgetPwd'
 
   export default {
     name: 'CCLogin',
@@ -30,7 +31,8 @@
       }
     },
     components: {
-      CCHeaderLogin
+      CCHeaderLogin,
+      CCForgetPwd
     },
     created () {
       this.setBankGround()
@@ -49,14 +51,14 @@
         let resp = doLogin(this.strUserName, this.strPwd, nIsRemember)
         resp.then(function (data) {
           if (data.code === 0) {
-            _self.$router.go(-1)
+            _self.$router.go(-1) // --登录成功后回到跳转登录页面之前的页面
           } else {
             alert(data.msg)
           }
         })
       },
       forgetPwd () {
-        this.$router.push('/login')
+        this.$router.push('/forgetpwd')
       }
     }
   }
