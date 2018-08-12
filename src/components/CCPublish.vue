@@ -17,7 +17,7 @@
         </div>
         <div ref="contextEditor" style="min-height: 450px;"></div>
         <div style="margin-top: 20px;">
-          <Button>保存</Button>
+          <Button @click="saveAircle">保存</Button>
           <Button type="info">发布</Button>
         </div>
       </div>
@@ -28,6 +28,7 @@
 <script>
   import E from 'wangeditor'
   import CCHeader from './CCHeader'
+  import { doSaveQuestion } from '../net/HttpApi'
 
   export default {
     name: 'editor',
@@ -37,7 +38,8 @@
           title: '',
           subTitle: '',
           context: ''
-        }
+        },
+        editorContent: ''
       }
     },
     components: {
@@ -49,6 +51,14 @@
       },
       goUserCenter: function () {
         this.$router.push({path: '/userInfo'})
+      },
+      saveAircle: function () {
+        let resp = doSaveQuestion(this.article.title, this.article.subTitle, this.article.context)
+        resp.then(function (data) {
+          if (data.code === 0) {
+            alert(data.msg)
+          }
+        })
       }
     },
     mounted () {

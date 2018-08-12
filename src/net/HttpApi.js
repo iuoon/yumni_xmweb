@@ -168,3 +168,20 @@ export let doSendMailCode = async (strEmail) => {
     console.log(error)
   })
 }
+
+export let doSaveQuestion = async (strTitle, strSummary, strContent) => {
+  let response = await fetch(host + `app/doSaveQuestion`, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    mode: 'cors',
+    credentials: 'include',
+    body: JSON.stringify({param: {strTitle: strTitle, strSummary: strSummary, strContent: strContent}, header: header})
+  }).catch((error) => {
+    console.log(error)
+  })
+  return response.json().catch((error) => {
+    console.log(error)
+  })
+}
