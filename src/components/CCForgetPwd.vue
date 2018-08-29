@@ -1,6 +1,6 @@
 <template>
   <div class="background">
-    <div class="login_c">
+    <div :class="loginClass">
       <component :is="componentName"></component>
       <br>
     </div>
@@ -15,7 +15,7 @@
   var componentPreResetPwd = {
     template: `<div>
                  <Input v-model="strUserName" placeholder="请输入手机号/邮箱" style="width: 250px" class="input-d"></Input>
-                 <Input v-model="strCheckCode"  placeholder="验证码" style="width: auto;margin-right: 3%;" class="input-d"></Input>
+                 <Input v-model="strCheckCode"  placeholder="请输入验证码" style="width: auto;margin-right: 3%;" class="input-d"></Input>
                  <Button class="input-d" @click="doSendMobileCode()">发送验证码</Button>
                  <Button type="info" style="width: 250px" class="input-d" @click="doNext()">下一步</Button>
                </div>`,
@@ -27,6 +27,17 @@
     },
     methods: {
       doNext () {
+        if (this.strUserName === '') {
+          self.showMsg(1, '请输入手机号/邮箱')
+          return
+        }
+        if (this.strCheckCode === '') {
+          self.showMsg(1, '请输入验证码')
+          return
+        }
+        // TODO --验证用户是否存在
+        self.strUserName = this.strUserName
+        self.loginClass = 'login_d'
         self.changeComponent()
       }
     }
@@ -34,22 +45,24 @@
 
   var componentResetPwd = {
     template: `<div>
-                 <Input v-model="strUserName" placeholder="请输入手机号/邮箱" style="width: 250px" class="input-d"></Input>
+                 <Input v-model="strUserName" type="hidden" placeholder="请输入手机号/邮箱" style="width: 250px" class="input-d"></Input>
                  <Input v-model="strNewPwd" type="password" placeholder="新密码" style="width: 250px" class="input-d"></Input>
                  <Input v-model="strNewPwd1" type="password" placeholder="再次输入新密码" style="width: 250px" class="input-d"></Input>
                  <Input v-model="strCheckCode"  placeholder="验证码" style="width: auto;margin-right: 3%;" class="input-d"></Input>
                  <Button class="input-d" @click="doSendMobileCode()">发送验证码</Button>
-                 <Button type="info" style="width: 250px" class="input-d" @click="doRegister()">修改密码</Button>
+                 <Button type="info" style="width: 250px" class="input-d" @click="doResetPwd()">修改密码</Button>
                </div>`,
     data () {
       return {
-        strUserName: '',
+        strUserName: self.strUserName,
         strNewPwd: '',
         strNewPwd1: '',
         strCheckCode: ''
       }
     },
     methods: {
+      doResetPwd () {
+      }
     }
   }
 
@@ -58,7 +71,8 @@
     data () {
       return {
         componentName: 'componentPreResetPwd',
-        registrMethodName1: '手机'
+        strUserName: '',
+        loginClass: 'login_c'
       }
     },
     components: {
@@ -75,6 +89,9 @@
       },
       changeComponent () {
         this.componentName = 'componentResetPwd'
+      },
+      showMsg (type, msg) {
+        this.$refs.ccalert.showMsg(type, msg)
       }
     }
   }
@@ -100,11 +117,18 @@
     box-shadow:0px 0px 5px #ccc;
     text-align:center;
   }
-  .head-u{
-    margin-top: 10px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 400;
+  .login_d{
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    width:300px;
+    height: 250px;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 4px;
+    z-index: 10;
+    box-shadow:0px 0px 5px #ccc;
+    text-align:center;
   }
   .input-d{
     margin-left: auto;
